@@ -8,7 +8,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 	providers: [NgbCarouselConfig],
 })
 export class HomeSliderComponent implements OnInit {
-	sliderDetaails = [];
+	sliderDetails = [];
 	constructor(private _homePageService: HomePageService, private config: NgbCarouselConfig) {}
 
 	ngOnInit() {
@@ -17,7 +17,7 @@ export class HomeSliderComponent implements OnInit {
 		this.config.keyboard = false;
 		this.config.pauseOnHover = false;
 		this._homePageService.getHomeSliderDetails().subscribe((res: any) => {
-			this.sliderDetaails = res.home_slider_img;
+			this.sliderDetails = res.home_slider_img;
 			res.home_slider_img.sort((a: { order: number }, b: { order: number }) => a.order - b.order);
 		});
 	}

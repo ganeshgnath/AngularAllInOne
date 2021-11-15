@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: {
-    demo_img:"https://media.ganeshgnath.in/"
+    demo_img:"http://127.0.0.1/ggn_sites/media-storage/"
   }
 };
 
