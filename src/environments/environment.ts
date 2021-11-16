@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   api: {
-    demo_img:"http://127.0.0.1/ggn_sites/media-storage/"
+    demo_img:"http://127.0.0.1/ggn_sites/media-storage/",
+    data_api: "http://127.0.0.1/ggn_sites/ggn_admin/api/"
   }
 };
 

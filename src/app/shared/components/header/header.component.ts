@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,21 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Output() showHideNavMenu = new EventEmitter();
   showMenu = false;
-  constructor() {}
+  loginIconFlag=false;
+  constructor(  private _authService:AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._authService.isLogged.subscribe((flag) => {
+			console.log(flag);
+      this.loginIconFlag =flag;
+		});
+  }
   showHideMenu() {
     this.showMenu = !this.showMenu;
     this.showHideNavMenu.emit();
+  }
+
+  logOut():void{
+    this._authService.logOut();
   }
 }

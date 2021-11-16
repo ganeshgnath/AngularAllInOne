@@ -1,0 +1,25 @@
+<form class="login-form" [formGroup]="loginFormGroup" (ngSubmit)="loginSubmit()">
+	<div class="row form-parent">
+		<mat-form-field class="col-12" appearance="fill">
+			<mat-label>Email</mat-label>
+			<input type="text" matInput formControlName="username" [errorStateMatcher]="matcher"
+				placeholder="Ex. pat@example.com">
+			<mat-hint>User name to login please enter 'admin'!</mat-hint>
+			<mat-error *ngIf="loginFormGroup.controls.username.invalid && loginFormGroup.controls.username.touched">
+				Please enter a valid email address / user name
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="col-12" appearance="fill">
+			<mat-label>Password</mat-label>
+			<input [type]="hide ? 'password' : 'text'" matInput formControlName="password" [errorStateMatcher]="matcher">
+			<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+			<mat-hint> Please enter your password for this demon site 'Adfsd!@EAsd'</mat-hint>
+			<mat-error *ngIf="loginFormGroup.controls.password.invalid && loginFormGroup.controls.password.touched">
+				Please enter your password
+			</mat-error>
+		</mat-form-field>
+	</div>
+	<div class="example-button-row">
+		<button [disabled]="loginFormGroup.invalid" mat-raised-button color="primary" type="submit">Login</button>
+	</div>
+</form>

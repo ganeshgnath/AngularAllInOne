@@ -10,6 +10,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { NavMenuComponent } from './shared/components/nav-menu/nav-menu.component';
 import { CommonMatModules } from './shared/modules/common-mat-modules';
 import { SharedModule } from './shared/modules/shared.module';
+import { UserAuthGuard } from './shared/guards/user-auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { SharedModule } from './shared/modules/shared.module';
     CommonMatModules,
     SharedModule,
   ],
-  providers: [],
+  providers: [UserAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

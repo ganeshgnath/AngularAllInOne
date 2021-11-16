@@ -1,12 +1,14 @@
 <mat-drawer-container class="example-container" autosize>
 	<mat-drawer #drawer class="example-sidenav" mode="side">
-		<app-nav-menu></app-nav-menu>
+		<app-nav-menu (showHideNavMenu)="drawer.toggle();"></app-nav-menu>
 	</mat-drawer>
 	<div class="">
 		<app-header (showHideNavMenu)="drawer.toggle();"></app-header>
 		<div>
 			<!-- class="container" -->
-			<router-outlet></router-outlet>
+			<section class="main-outer p-4">
+				<router-outlet></router-outlet>
+			</section>
 		</div>
 		<app-footer fxFlexOffset="auto"></app-footer>
 	</div>

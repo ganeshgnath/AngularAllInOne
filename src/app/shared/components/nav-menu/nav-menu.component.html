@@ -1,7 +1,10 @@
 <mat-list>
-  <mat-list-item>Item 1</mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>Item 2</mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>Item 3</mat-list-item>
+	<section class="row">
+		<section class="col-9">	<mat-list-item>Item 1</mat-list-item></section>
+		<section class="col-3"><mat-icon (click)="showHideMenu()">close</mat-icon></section>
+	</section>	
+	<mat-divider></mat-divider>
+	<mat-list-item>Item 2</mat-list-item>
+	<mat-divider></mat-divider>
+	<mat-list-item>Item 3</mat-list-item>
 </mat-list>

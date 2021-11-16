@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nav-menu',
@@ -6,18 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent implements OnInit {
+  @Output() showHideNavMenu = new EventEmitter();
 
   constructor() { }
 
-  messages =[
-    {
-      "from":"aaaaa",
-      "subject":"subject 111111",
-      "content":"content 111111",
-    }
-  ]
-
   ngOnInit() {
+  }
+  showHideMenu() {
+    this.showHideNavMenu.emit();
   }
 
 }

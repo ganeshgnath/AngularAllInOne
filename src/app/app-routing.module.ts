@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NoSuchPageComponent } from './shared/components/no-such-page/no-such-page.component';
+import { UserAuthGuard } from './shared/guards/user-auth.guard';
 
 const routes: Routes = [
  
@@ -11,11 +12,13 @@ const routes: Routes = [
   },
   { 
     path: '',
+    canActivate: [UserAuthGuard],
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },
   { 
     path: 'home',
+    canActivate: [UserAuthGuard],
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },

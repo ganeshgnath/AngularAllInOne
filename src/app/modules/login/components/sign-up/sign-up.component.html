@@ -1,0 +1,46 @@
+<form class="sign-up-form" [formGroup]="signUpFormGroup" (ngSubmit)="signUpSubmit()">
+	<div class="row form-parent">
+		<mat-form-field class="col-12" appearance="fill">
+			<mat-label>Email</mat-label>
+			<input type="text" matInput formControlName="username" [errorStateMatcher]="matcher"
+				placeholder="Ex. pat@example.com">
+			<mat-hint>User name to login please enter 'admin'!</mat-hint>
+			<mat-error *ngIf="signUpFormGroup.controls.username.invalid && signUpFormGroup.controls.username.touched">
+				Please enter a valid email address / user name
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="col-12" appearance="fill">
+			<mat-label>Name</mat-label>
+			<input type="text" matInput formControlName="name" [errorStateMatcher]="matcher" placeholder="Ex. Ganesh">
+			<mat-hint>Please Enter Your Name</mat-hint>
+			<mat-error *ngIf="signUpFormGroup.controls.username.invalid && signUpFormGroup.controls.username.touched">
+				Please enter a name
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="col-12" appearance="fill">
+			<mat-label>Password</mat-label>
+			<input [type]="hide ? 'password' : 'text'" matInput formControlName="password" [errorStateMatcher]="matcher">
+			<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+			<mat-hint> Please enter your password password</mat-hint>
+			<mat-error *ngIf="signUpFormGroup.controls.password.invalid && signUpFormGroup.controls.password.touched">
+				Please enter your password
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="col-12" appearance="fill">
+			<mat-label>Confirm Password</mat-label>
+			<input [type]="chide ? 'password' : 'text'" matInput formControlName="cpassword" [errorStateMatcher]="matcher">
+			<mat-icon matSuffix (click)="chide = !chide">{{chide ? 'visibility_off' : 'visibility'}}</mat-icon>
+			<mat-hint> Please confirm your password password <span
+					*ngIf="(signUpFormGroup.controls.password.value != signUpFormGroup.controls.cpassword.value) && (signUpFormGroup.controls.cpassword.dirty)">
+					<span> : Password Not Matching</span>
+				</span></mat-hint>
+			<mat-error *ngIf="signUpFormGroup.controls.cpassword.invalid && signUpFormGroup.controls.cpassword.touched">
+				Please Confirm you password
+			</mat-error>
+
+		</mat-form-field>
+	</div>
+	<div class="example-button-row">
+		<button [disabled]="signUpFormGroup.invalid" mat-raised-button color="primary" type="submit">Login</button>
+	</div>
+</form>
