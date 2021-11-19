@@ -32,12 +32,12 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
+   
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -68,10 +68,10 @@ import { BrowserModule } from '@angular/platform-browser';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatNativeDateModule
   ],
-  exports:[  BrowserModule,
-    BrowserAnimationsModule,
+  exports:[  
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -102,7 +102,10 @@ import { BrowserModule } from '@angular/platform-browser';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule],
+    MatPaginatorModule,
+    MatNativeDateModule
+
+  ],
   declarations: []
 })
 export class AllMatModule { }

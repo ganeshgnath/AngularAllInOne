@@ -1,4 +1,9 @@
-
-mat-list{
-    min-width: 250px;
+mat-list {
+	min-width: 250px;
+}
+mat-sidenav-container{
+	height: auto !important;
+	.parent-body{
+		padding: 16px 0;
+	}
 }

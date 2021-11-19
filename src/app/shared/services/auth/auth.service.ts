@@ -17,6 +17,7 @@ export class AuthService {
 	setToken(data: any) {
 		localStorage.setItem('user', JSON.stringify(data.user_details[0]));
 		localStorage.setItem('user_token', data.user_details[0].api_token);
+		this.router.navigate(['home'], {});
 		this.isLogged.next(true);
 	}
 
@@ -36,14 +37,12 @@ export class AuthService {
 			this.isLogged.next(true);
 		}
 		this.isLogged.subscribe((flag) => {
-      console.log(flag);
-      
 			if (!flag) {
 				localStorage.removeItem('user');
 				localStorage.removeItem('user_token');
 				this.router.navigate(['login'], {});
 			} else {
-				this.router.navigate(['home'], {});
+				// this.router.navigate(['home'], {});
 			}
 		});
 		

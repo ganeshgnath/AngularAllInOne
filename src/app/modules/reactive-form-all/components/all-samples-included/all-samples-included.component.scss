@@ -1,0 +1,12 @@
+.sample-all-form {
+	overflow: hidden;
+	.mat-hint,
+	.mat-error {
+        font-size: 10.5px;
+        color: rgba(0,0,0,.6);
+	}
+
+	.mat-error {
+        color: #f44336;
+	}
+}

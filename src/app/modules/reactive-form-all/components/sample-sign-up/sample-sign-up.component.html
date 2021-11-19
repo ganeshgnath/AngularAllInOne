@@ -41,6 +41,6 @@
 		</mat-form-field>
 	</div>
 	<div class="example-button-row">
-		<button [disabled]="signUpFormGroup.invalid ||(signUpFormGroup.controls.password.value != signUpFormGroup.controls.cpassword.value)" mat-raised-button color="primary" type="submit">Login</button>
+		<button [disabled]="signUpFormGroup.invalid || (signUpFormGroup.controls.password.value != signUpFormGroup.controls.cpassword.value)" mat-raised-button color="primary" type="submit">Login</button>
 	</div>
 </form>

@@ -1,2 +1,19 @@
-<h1 [innerHTML]="allInOneAbout?.heading"></h1>
-<p [innerHTML]="allInOneAbout?.content"></p>
+<section class="app-about-the-plan">
+<ng-container *ngFor="let item of allInOneAbout">
+	<ng-container *ngIf="item.status">
+		<mat-accordion>
+			<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						<h3 [innerHTML]="item?.title"></h3>
+					</mat-panel-title>
+					<mat-panel-description>
+						<!-- Currently I am -->
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<p [innerHTML]="item?.content"></p>
+			</mat-expansion-panel>
+		</mat-accordion>
+	</ng-container>
+</ng-container>
+</section>

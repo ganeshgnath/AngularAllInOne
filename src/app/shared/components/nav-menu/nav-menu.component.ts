@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,13 +8,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class NavMenuComponent implements OnInit {
   @Output() showHideNavMenu = new EventEmitter();
+  loginIconFlag=false;
 
-  constructor() { }
+  constructor(  private _authService:AuthService) {}
 
   ngOnInit() {
+    this._authService.isLogged.subscribe((flag) => {
+      this.loginIconFlag =flag;
+		});
   }
-  showHideMenu() {
-    this.showHideNavMenu.emit();
+  logOut():void{
+    this._authService.logOut();
   }
-
 }

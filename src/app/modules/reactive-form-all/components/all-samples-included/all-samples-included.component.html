@@ -1,0 +1,164 @@
+<form class="sample-all-form" [formGroup]="allFormGroup" (ngSubmit)="signUpSubmit()">
+	<div class="row form-parent">
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>First Name*</mat-label>
+			<input type="text" matInput formControlName="fname" [errorStateMatcher]="matcher"
+				placeholder="First Name With required">
+			<mat-hint>Please Enter Your First Name : this is a required filed</mat-hint>
+			<mat-error *ngIf="allFormGroup.controls.fname.invalid && allFormGroup.controls.fname.touched">
+				Please enter a firstname : this is a required filed
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Last Name</mat-label>
+			<input type="text" matInput formControlName="lname" placeholder="Last Name With optional">
+			<mat-hint>Please Enter Your Last Name : this is a optional filed</mat-hint>
+		</mat-form-field>
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Email</mat-label>
+			<input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
+				placeholder="Ex. pat@example.com">
+			<mat-hint>Email Input type</mat-hint>
+			<mat-error *ngIf="allFormGroup.controls.email.invalid && allFormGroup.controls.email.touched">
+				Please enter a valid email address
+			</mat-error>
+		</mat-form-field>
+
+		<div class="mat-form-field-wrapper ng-tns-c182-7">
+			<div class="mat-form-field-infix ng-tns-c182-7">
+				<ngx-intl-tel-input class="col-6"
+					[cssClass]="'mat-input-element mat-form-field-autofill-control ng-tns-c182-7 ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored '"
+					[preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
+					[searchCountryFlag]="true" [searchCountryField]="[
+					SearchCountryField.Iso2,
+					SearchCountryField.Name]" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.India" [maxLength]="'15'"
+					[phoneValidation]="true" [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National"
+					name="phone" formControlName="phone" matInput>
+				</ngx-intl-tel-input>
+				<span class="mat-hint">Mobile Input type <a href="https://www.npmjs.com/package/ngx-intl-tel-input"
+						target="_blank">Ref Go To <i _ngcontent-spe-c114="" class="fa fa-github"></i></a>
+				</span>
+				<span class="mat-error" *ngIf="allFormGroup.controls.phone.invalid && allFormGroup.controls.phone.touched">
+					Please enter a valid Mobile
+				</span>
+			</div>
+		</div>
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Password</mat-label>
+			<input [type]="hide ? 'password' : 'text'" matInput formControlName="password" [errorStateMatcher]="matcher">
+			<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+			<mat-hint> Please enter your password password</mat-hint>
+			<mat-error *ngIf="allFormGroup.controls.password.invalid && allFormGroup.controls.password.touched">
+				Please enter your password
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Confirm Password</mat-label>
+			<input [type]="chide ? 'password' : 'text'" matInput formControlName="cpassword" [errorStateMatcher]="matcher">
+			<mat-icon matSuffix (click)="chide = !chide">{{chide ? 'visibility_off' : 'visibility'}}</mat-icon>
+			<mat-hint> Please confirm your password password <span
+					*ngIf="(allFormGroup.controls.password.value != allFormGroup.controls.cpassword.value) && (allFormGroup.controls.cpassword.dirty)">
+					<span> : Password Not Matching</span>
+				</span></mat-hint>
+			<mat-error *ngIf="allFormGroup.controls.cpassword.invalid && allFormGroup.controls.cpassword.touched">
+				Please Confirm you password
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Text Area *</mat-label>
+			<textarea matInput [errorStateMatcher]="matcher" formControlName="textarea" cdkTextareaAutosize
+				#autosize="cdkTextareaAutosize"></textarea>
+			<mat-hint>Please Enter Your content : this is a required filed</mat-hint>
+			<mat-error *ngIf="allFormGroup.controls.textarea.invalid && allFormGroup.controls.textarea.touched">
+				Please Enter Your content : this is a required filed
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Auto Complete</mat-label>
+			<input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="autocomplte"
+				[matAutocomplete]="auto">
+			<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+				<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+					{{option}}
+				</mat-option>
+			</mat-autocomplete>
+			<mat-hint> This is a auto complete filed with fruits names <a
+					href="https://material.angular.io/components/autocomplete/overview" target="_blank">Ref Go To <span
+						class="angular-logo"></span>
+				</a> </mat-hint>
+			<mat-error *ngIf="allFormGroup.controls.autocomplte.invalid && allFormGroup.controls.autocomplte.touched">
+				Please select one fruit
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Sample mat select option with fruits</mat-label>
+			<mat-select formControlName="selectoption">
+				<mat-option *ngFor="let fruit of options" [value]="fruit">
+					{{fruit}}
+				</mat-option>
+			</mat-select>
+			<mat-hint> This is a Dropdown filed with fruits names <a
+					href="https://material.angular.io/components/select/overview" target="_blank">Ref Go To <span
+						class="angular-logo"></span>
+				</a> </mat-hint>
+			<mat-error *ngIf="allFormGroup.controls.selectoption.invalid && allFormGroup.controls.selectoption.touched">
+				Please select one fruit
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="col-6" appearance="fill">
+			<mat-label>Sample mat select option with Pokemon grouping</mat-label>
+			<mat-select formControlName="selecton_with_group_option">
+				<mat-option>-- None --</mat-option>
+				<mat-optgroup *ngFor="let group of pokemonGroups" [label]="group.name" [disabled]="group.disabled">
+					<mat-option *ngFor="let pokemon of group.pokemon" [value]="pokemon.value">
+						{{pokemon.viewValue}}
+					</mat-option>
+				</mat-optgroup>
+			</mat-select>
+			<mat-hint> This is Dropdown with grouping
+				<a href="https://material.angular.io/components/select/overview" target="_blank">Ref Go To <span
+						class="angular-logo"></span>
+				</a>
+			</mat-hint>
+			<mat-error
+				*ngIf="allFormGroup.controls.selecton_with_group_option.invalid && allFormGroup.controls.selecton_with_group_option.touched">
+				Please select one option
+			</mat-error>
+		</mat-form-field>
+
+		<section class="col-6 ml-2 p-3">
+			<mat-radio-group formControlName="radio_btn" aria-label="Select an option">
+				<mat-radio-button value="1">Option 1</mat-radio-button>
+				<mat-radio-button value="2">Option 2</mat-radio-button>
+			</mat-radio-group>
+			<mat-hint>Sample Radio buttons
+				<a href="https://material.angular.io/components/radio/overview" target="_blank">Ref Go To <span
+						class="angular-logo"></span>
+				</a>
+			</mat-hint>
+			<mat-error *ngIf="allFormGroup.controls.radio_btn.invalid && allFormGroup.controls.radio_btn.touched">
+				Please select one option
+			</mat-error>
+		</section>
+
+		<section class="col-6 ml-2 p-3">
+			<mat-checkbox formControlName="checkbox" class="example-margin">Pleaseconfirm the details are give true !
+			</mat-checkbox>
+		</section>
+
+	</div>
+	<div class="example-button-row">
+		<button
+			[disabled]="allFormGroup.invalid || (allFormGroup.controls.password.value != allFormGroup.controls.cpassword.value)"
+			mat-raised-button color="primary" type="submit">Submit</button>
+	</div>
+</form>
